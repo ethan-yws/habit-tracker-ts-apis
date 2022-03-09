@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('user')
+@Entity('users')
 export class UserEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -23,6 +23,6 @@ export class UserEntity extends BaseEntity {
   @Column({ type: 'timestamp', name: 'cre_dt' })
   createdDate: Date;
 
-  @Column({ type: 'timestamp', nullable: true, name: 'upt_dt' })
+  @Column({ type: 'timestamp', nullable: true, name: 'upt_at' })
   updatedDate: Date;
 }
