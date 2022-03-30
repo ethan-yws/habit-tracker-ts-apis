@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create.user.dto';
 import { UserEntity } from '../entity/user.entity';
 import { v4 as uuid } from 'uuid';
@@ -6,7 +6,7 @@ import { SignInDto } from '../dto/signin.dto';
 
 @Injectable()
 export class UserService {
-  // constructor() {}
+  constructor(private readonly loggerService: Logger) {}
 
   /**
    * Sign up a new user
@@ -25,6 +25,9 @@ export class UserService {
     };
 
     await UserEntity.insert(userInfo);
+    this.loggerService.debug(
+      `userService :: registerUser :: userInfo: ${userInfo}`,
+    );
     return userInfo.userId;
   }
 
@@ -40,7 +43,9 @@ export class UserService {
       password,
     });
 
-    console.log(user);
+    this.loggerService.debug(
+      `userService :: signIn :: userObject: ${JSON.stringify(user)}`,
+    );
     return user === undefined ? false : true;
   }
 }

@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create.user.dto';
 import { SignInDto } from '../dto/signin.dto';
 import { UserEntity } from '../entity/user.entity';
@@ -19,7 +20,7 @@ describe('User Service', () => {
   let service: UserService;
 
   beforeEach(() => {
-    service = new UserService();
+    service = new UserService(new Logger());
   });
 
   afterEach(() => {
