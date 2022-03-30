@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { HabitTrackerModule } from './habit-tracker/habit.tracker.module';
 import { UserEntity } from './habit-tracker/entity/user.entity';
+import { HabitEntity } from './habit-tracker/entity/habit.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -16,7 +17,7 @@ import { UserEntity } from './habit-tracker/entity/user.entity';
         username: configService.get<string>('DATABASE_USERNAME'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [UserEntity],
+        entities: [UserEntity, HabitEntity],
         synchronize: false,
         ssl: { rejectUnauthorized: false },
       }),

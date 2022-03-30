@@ -23,9 +23,12 @@ export class HabitEntity extends BaseEntity {
   @Column({ type: 'varchar', length: 50, name: 'theme_color' })
   themeColor: string;
 
-  @Column({ type: 'timestamp', name: 'cre_dt' })
-  createdDate: Date;
+  // @Column({ type: 'timestamp', name: 'cre_dt' })
+  // createdDate: Date;
 
-  @Column({ type: 'timestamp', nullable: true, name: 'upt_at' })
-  updatedDate: Date;
+  // @Column({ type: 'timestamp', nullable: true, name: 'upt_at' })
+  // updatedDate: Date;
+
+  @Column({ type: 'varchar', name: 'user_id' })
+  userId: string;
 }
